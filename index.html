@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Gangonty birthday❤️</title>
+    <link rel="stylesheet" href="indexxs.css">
+</head>
+<body>
+
+    <!-- 1. شاشة الباسورد -->
+    <div id="password-screen">
+        <div class="heart-box">
+            <div class="heart-shape">
+                <div class="content-inside-heart">
+                    <h2>To Gangonty❤️</h2>
+                    <input type="password" id="passwordInput" placeholder=" تاريخ اول يوم اتكلمنا فيه">
+                    <button onclick="checkPassword()">خشي من هنا يا قلبي</button>
+                    <p id="error-msg" style="color: white; display: none; margin-top: 10px; font-size: 12px;"> غلط يا حبيبتي! ❌</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. المحتوى الأساسي (مخفي في البداية) -->
+    <div id="main-content" style="display: none;">
+        <h1 class="main-title">كل سنة وأنتي طيبة يا أغلى حاجه في حياتي كلها! 🎂❤️</h1>
+
+
+<!-- 
+            <div class="music-section">
+                
+                <audio id="myAudio" loop>
+                    <source src="song1.mp3" type="audio/mpeg">
+                </audio>
+                <div class="music-controls">
+        
+                    <button onclick="playTargetSong('Albumaty.Com_mhmd_abd_algbar_asgl_rwhy.mp3')"> الأغنية الأولى بتاعتنا</button>
+                    <button onclick="playTargetSong('Albumaty.Com_angham_msh_hbyby_bs_-_ttr_mslsl_atnyn_ghyrna.mp3')">الأغنية الثانية بتاعتنا</button>
+                </div>
+            </div> -->
+
+
+
+            <div class="music-section">
+                <p>🎵 اغانينا الخاصه يا قلبي</p>
+                <p> اول اغنيه دي مني ليكي</p>
+                <p> تاني اغنيه بتاعتنا</p>
+                <p> خليكي مشغله الاغاني وانتي بتقراي </p>
+                
+                <!-- مفيش autoplay هنا -->
+                <audio id="myAudio">
+                    <source src="song1.mp3" type="audio/mpeg">
+                </audio>
+            
+                <div class="player-controls">
+                    <button onclick="seekAudio(-5)">⏪ 5s</button>
+                    <button id="playPauseBtn" onclick="togglePlay()">▶️ تشغيل</button>
+                    <button onclick="seekAudio(5)">5s ⏩</button>
+                    <button onclick="skipSong()">⏭️ التالية</button>
+                </div>
+                
+                <p id="songName" style="font-size: 0.8rem; color: #ffcc00; margin-top: 10px;">جاهز للتشغيل..</p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- الكروت الكبيرة اللي تحت بعض -->
+        <div class="cards-container">
+            
+            <div class="envelopes-wrapper">
+                <!-- الجواب الأول -->
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3>  كلام لعيد ميلاد قلبي 💌</h3>
+                        <p> كل سنه وانتي طيبه احلي واجمل واغلي حاجه دخلت حياتي كل سنه وانتي معايا كل سنه واشوفك فيها احلي واجمل وانسانه علي الكوكب انتي والله بالنسبالي ما انسانه انتي بالنسبالي الحياه كلها انتي قلبي وروحي وحياتي والله اللي مينفعش اعيش من غيرهم مفيش انسان بيعيش من غير قلبو وانا مقدرش اعيش من غيرك والله انا حياتي بقت حلوه اوي اوي اوي بوجودك انا اول مره اعرف معني الحب معاكي اول مره اعرف ازاي مشاعري بتروح لحد كدا ازاي شخص يقدر يغيرلي يومي ومزاجي بس انتي مش كدا بس انتي قدرتي تغيري حياه كامله انا ممتن لليوم دا اوي وبعشق اليوم دا عشان جت فيه احلي واحسن انسانه شافتها عيني انا بحب اليوم اوي وبحبك يا احلي واحده في الدنيا كلها ❤️❤️❤️❤️❤️</p>
+                    </div>
+                    <div class="envelope-front">دوسي هنا عشان تفتحي الجواب الأول</div>
+                </div>
+            
+                <!-- الجواب الثاني -->
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3> اول يوم شوفتك فيه</h3>
+                        <p> يوم 26/11  فاكر اليوم دا بكل تفاصيلو فاكر اول بصه ليا ليكي واول بصه ليكي ليا فاكر قلقك وتوهانك وسط صحابك فاكر ضحكتك وبموت فيها كل اما افنكر اليوم دا بقعد اقول ياااه هي دي الانسانه اللي انا بموت فيها كدا الوقتي بارتني عرفتها من زمان والله فاكر اليوم بكل تفاصيلو بلبسك فاكر لما مشيتي وكلمتك فون كنت هموت وامشي وراكي اهو الحمدلله جه اليوم اللي بقيتي فيه حبيبتي</p>
+                    </div>
+                    <div class="envelope-front"> الجواب التاني </div>
+                </div>
+
+
+
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3> اول يوم قابلتك فيه</h3>
+                        <p> دا بقا اول يوم وقفت فيه معاكي كان في الميدان انا فاكرو بتفاصيلو والله علي قد ما شكلنا كان وحش اليوم دا بس دا اكتر يوم انا اتبسطت فيه لما قربت منك اليوم دا بعد ما روحت حسيت ليكي احساس اني عايز اقرب منها اكتر واعرفها انا من اليوم دا حسيت اني عايز اتكلم معاكي اكتر واكتر والله وكنت مبسوط بيكي اوي وانتي اخده جايزه من شاهين وانا اول واحد شوفتها ومسكتها فاكر بجد كل حاجه اليوم دا واحلي حاجه حصلت فيه اني خدت حته من شعرك دي احلي حاجه موجوده في البيت كلو طالما حاجه منك ومقدرش اوديها في حته انا بقيت باخدها وابوس فيها لحد في يوم ما شعرك كلو وانتي تبقو جنبي انا بحبك وبحب اليوم اوي </p>
+                    </div>
+                    <div class="envelope-front"> الجواب التالت</div>
+                </div>
+
+
+
+
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3> اول يوم خرجنا فيه  </h3>
+                        <p> دا بقا اليوم اللي بموت فيه دا يوم غير اي يوم لان من اليوم دا بدات احبك بدا قلبي يروحلك انا اليوم دا روحت فيه قولت البت دي انا حبيتها اوي لقيتني مبسوط اوي قعدت مستغرب نفسي قولت ازاي بنت تبسطني بالطريقه دي هنا بدات استوعب ان دي مش اي بنت والله دي اللي قلبي حبها واختارها كنت مبسوط اوي بكل تفصيله عملناها مع بعض اليوم دا بجد انا من اليوم دا وحسيت ان قلبي مش عايز غيرك انتي قلبي حابك انتي واختارك انتي والحمدلله دلوقتي فعلا اختارت صح واختارت احلي واحده واكتر حد بنبسط معاه انا كتبت الايام دي مخصوص عشان الايام دي هما اللي غيرو جوايا حاجات كتير اوي واحد قربت فيه منك وحسيت اني عايز اقرب منك اكتر واتكلم معاكي كتير اوي وواحد حبيتك فيه من كل قلبي وقلبي اختارك انتي بحبك اوي بحب اليومين دول وبحب اي وقت قدر يجمعني بيكي </p>
+                    </div>
+                    <div class="envelope-front"> الجواب الرابع</div>
+                </div>
+           
+
+
+
+
+    
+
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3>  هنا بقا كلمتين كدا بحسهملك اوي </h3>
+                        <p>  انا بجد بحبك اوي اوي اوي انا كل يوم بحبك عن الاول كل يوم حبي ليكي بيزيد بحس ان خلاص مستحيل حد يكون بيحبك اكتر مني والله حتي امك وابوكي انا متاكد ان مفيش حد في الدنيا دي يقدر يحبك قدي او اصلا مفيش حد بيحب حد بالطريقه دي جنه انا بحب اشوفك مبسوطه اوي ومزاجك حلو دا بيخليني مبسوط اوي بحب اشوفك ناجحه في حياتك ببقا طاير من الفرحه اكتر من حاجه ليا شخصيا انتي بتقدري تاثري عليا بطريقه غير طبيعيه والله نفسي اشوفك احسن واحده والله وبحب اليوم اللي بشوفك فيه وانتي معايا بحس اني معايا الدنيا كلها مالك الدنيا وما فيها والله ببقا مش عايز اي حاجه من الدنيا لان الدنيا كلها بتبقا معايا ببقا مبسووط اوييي والله ولا بقا لما اروح بفضل قاعد مغمض كدا وقلبي يدق من الفرحه لما افتكر ان كنت معاكي وافتكر كل اللي حصل واتخيله كل اما اقرب منك بحس اني عايز اقرب اكتر واكتر بيبقا نفسي اخدك في حضني والله وبغير عليكي من الهوا يا جنه بغير عليكي من النمله عشان انتي بتاعتي انا محدش يشوفك غيري لدرجه نفسي اخدك جوا حضني اخبيكي من الدنيا كلها وتبقي بتاعتي انا بس انا بموت فيكي با احلي واغلي حاجه في حياتي كلها ربنا يخليكي ليا ويديمك في حياتي ويديكي طوله العمر وانتي معايا يا اجمل حاجه في حياتي ❤️❤️❤️❤️❤️ </p>
+                    </div>
+                    <div class="envelope-front">الجواب الخامس</div>
+                </div>
+        
+
+    
+         
+
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3>  وعدي ليكي💍 </h3>
+                        <p> دا بقا وعد مني ليكي والله بوعدك اني مش هتجوز غيرك انتي انا بحبك ومش عايز غيرك انتي والله فبوعدك ان هييجي اليوم وتبقي حلالي وبتاعتي قدام كل الناس ووالله يا جنه لهعمل كل اللي نفسك فيه وهديكي عنيا عشان انتي تستاهلي الاغلي من عنيا كمان وهخليكي اكتر انسانه مبسوطه في الدنيا دي عشان وجودك معايا مخليني اكتر انسان مبسوط ودا وعد مني ليكي قدامك وقدام ربنا </p>
+                    </div>
+                    <div class="envelope-front"> الجواب السادس</div>
+                </div>
+
+                
+
+                <div class="envelope" onclick="this.classList.toggle('open')">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-paper">
+                        <h3> جنجونتي  </h3>
+                        <p> انااااا بحبكككك اوييييييي احلي من يتم ال 19 سنه في الدنيا اوعيييي تعيطييي وانتي بتقراي عشان عارفك بتدمعي انا حافظك اكتر من نفسك زي ما انتي عارفه بس دا اللي كنت عايز اقولهولك وحبيت اعبرلك عن كل حاجه جوايا عن طريق الجوابات عشان انتي بتحبي الحاجات دي  </p>
+                    </div>
+                    <div class="envelope-front">  اخر جواب</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!-- عداد الأيام -->
+<div class="countdown-container">
+    <p>إحنا مع بعض بقالنا:</p>
+    <div id="timer">
+        <span id="days">0</span> يوم و 
+        <span id="hours">0</span> ساعة و 
+        <span id="minutes">0</span> دقيقة
+    </div>
+    <p>من أجمل أيام حياتي ❤️</p>
+</div>
+
+
+
+
+
+
+<!-- 
+
+<div class="album-section">
+    <h2 class="section-title">صندوق ذكرياتنا 📸 (دوسي على الجوابات)</h2>
+    <div class="envelopes-grid">
+        
+        
+        <div class="photo-envelope" onclick="this.classList.toggle('open')">
+            <div class="p-envelope-flap"></div>
+            <div class="p-envelope-paper">
+                <img src="photo1.jpg" alt="Memory 1">
+                <p>أجمل يوم ❤️</p>
+            </div>
+            <div class="p-envelope-front">💌 افتحي دي</div>
+        </div>
+
+        
+        <div class="photo-envelope" onclick="this.classList.toggle('open')">
+            <div class="p-envelope-flap"></div>
+            <div class="p-envelope-paper">
+                <img src="photo2.jpg" alt="Memory 2">
+                <p>ضحكتك جنان ✨</p>
+            </div>
+            <div class="p-envelope-front">💌 ذكرى تانية</div>
+        </div>
+
+       
+        <div class="photo-envelope" onclick="this.classList.toggle('open')">
+            <div class="p-envelope-flap"></div>
+            <div class="p-envelope-paper">
+                <img src="photo3.jpg" alt="Memory 3">
+                <p>دايماً سوا 💍</p>
+            </div>
+            <div class="p-envelope-front">💌 أهم صورة</div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+<div class="main-content">
+    <!-- إضافة اسم Ganna بشكل مميز -->
+    <div class="name-header">
+        <span class="heart-icon">❤️</span>
+        <h1 class="ganna-name">Gangonty</h1>
+        <span class="heart-icon">❤️</span>
+    </div>
+
+    <h2 class="birthday-wish">كل سنة وأنتي طيبة يا روح قلبي! 🎂</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- كود الجافا سكريبت -->
+<script>
+        // التأكد من الباسورد
+        function checkPassword() {
+            const pass = document.getElementById('passwordInput').value;
+            const correctPass = "1234"; // غير الباسورد من هنا
+
+            if (pass === correctPass) {
+                document.getElementById('password-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.getElementById('myAudio').play(); // تشغيل الأغنية فور الدخول
+                startHearts(); // تشغيل القلوب
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        // فتح وقفل الكروت
+        function toggleCard(cardElement) {
+            cardElement.classList.toggle('active');
+        }
+
+        // تغيير الأغاني
+        function changeSong(src) {
+            const audio = document.getElementById('myAudio');
+            audio.src = src;
+            audio.play();
+        }
+
+        // أنيميشن القلوب
+        function startHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart-drop');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+
+
+
+
+// حط هنا تاريخ البداية بتاعكم (سنة، شهر - 1، يوم)
+// ملحوظة: الشهور في البرمجة بتبدأ من 0 (يعني شهر 1 هو 0، شهر 5 هو 4)
+const startDate = new Date(2024, 3, 11); // مثال: 10 مايو 2023
+
+function updateTimer() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById('days').innerText = days;
+    document.getElementById('hours').innerText = hours;
+    document.getElementById('minutes').innerText = minutes;
+}
+
+// تحديث العداد كل دقيقة
+setInterval(updateTimer, 60000);
+updateTimer(); // تشغيل فوري أول ما يفتح
+
+
+
+
+
+function playTargetSong(songPath) {
+    const audio = document.getElementById('myAudio');
+    
+    // 1. تغيير المسار للأغنية الجديدة
+    audio.src = songPath;
+    
+    // 2. أمر "التحميل" عشان المتصفح يجهز الملف
+    audio.load();
+    
+    // 3. أمر التشغيل (Play)
+    // بنستخدم .then عشان نتفادى أي رفض من المتصفح لو لسه محملتش
+    audio.play().catch(error => {
+        console.log("المتصفح محتاج تفاعل يدوي الأول: ", error);
+    });
+}
+
+// في دالة checkPassword، لو مش عايز أول أغنية تشتغل لوحدها،
+// شيل السطر ده: document.getElementById('myAudio').play();
+function checkPassword() {
+    const pass = document.getElementById('passwordInput').value;
+    const correctPass = "1132024"; 
+
+    if (pass === correctPass) {
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        
+        // لو عايز الموقع يفتح في صمت وهي تختار الأغنية براحتها، سيب السطر اللي تحت ده ممسوح
+        // startHearts(); 
+        updateTimer();
+    } else {
+        document.getElementById('error-msg').style.display = 'block';
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    
+    // أشكال مختلفة للقلوب
+    const shapes = ['❤️', '💖', '💗', '💓', '💕'];
+    heart.innerText = shapes[Math.floor(Math.random() * shapes.length)];
+    
+    // مكان عشوائي بالعرض
+    heart.style.left = Math.random() * 100 + "vw";
+    
+    // حجم عشوائي
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    
+    // سرعة عشوائية
+    const duration = Math.random() * 3 + 4; // من 4 لـ 7 ثواني
+    heart.style.animationDuration = duration + "s";
+    
+    document.body.appendChild(heart);
+    
+    // مسح القلب من الصفحة بعد ما يختفي
+    setTimeout(() => {
+        heart.remove();
+    }, duration * 1000);
+}
+
+// البدء في توليد القلوب بعد ما تدخل الباسورد
+function startLoveEffect() {
+    setInterval(createFloatingHeart, 300); // قلب جديد كل 300 مللي ثانية
+}
+
+// عدل دالة الـ checkPassword عشان تنادي على startLoveEffect
+function checkPassword() {
+    const pass = document.getElementById('passwordInput').value;
+    if (pass === "1132024") { // الباسورد بتاعك
+        document.getElementById('password-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        startLoveEffect(); // شغل القلوب هنا
+        updateTimer();
+    }
+}
+
+
+
+
+
+
+
+// 1. تحديد قائمة الأغاني
+const playlist = ["Albumaty.Com_mhmd_abd_algbar_asgl_rwhy.mp3", "Albumaty.Com_angham_msh_hbyby_bs_-_ttr_mslsl_atnyn_ghyrna.mp3"]; 
+let currentSongIndex = 0;
+
+// 2. الوصول لعناصر الصوت والتحكم
+const audio = document.getElementById('myAudio');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const songNameDisplay = document.getElementById('songName');
+
+// --- أهم خطوة: تحميل أول أغنية بمجرد تشغيل الكود ---
+function initPlayer() {
+    audio.src = playlist[currentSongIndex];
+    audio.load();
+    songNameDisplay.innerText = "جاهز لتشغيل: " + playlist[currentSongIndex];
+}
+initPlayer(); // استدعاء فوري
+
+// 3. وظيفة التشغيل والإيقاف المصلحة
+function togglePlay() {
+    // التأكد إن فيه مصدر (Source) للأغنية قبل التشغيل
+    if (!audio.src || audio.src.includes('undefined')) {
+        audio.src = playlist[currentSongIndex];
+        audio.load();
+    }
+
+    if (audio.paused) {
+        audio.play().then(() => {
+            playPauseBtn.innerHTML = "⏸️ إيقاف";
+            songNameDisplay.innerText = "شغال دلوقتي: " + playlist[currentSongIndex];
+        }).catch(error => {
+            console.error("خطأ في التشغيل:", error);
+            alert("تأكد من وجود ملف الأغنية في الفولدر!");
+        });
+    } else {
+        audio.pause();
+        playPauseBtn.innerHTML = "▶️ تشغيل";
+    }
+}
+
+// 4. التقديم والتأخير 5 ثواني
+function seekAudio(seconds) {
+    if (audio.readyState > 0) { // التأكد إن الأغنية محملة
+        audio.currentTime += seconds;
+    }
+}
+
+// 5. التبديل للأغنية التالية
+function skipSong() {
+    currentSongIndex++;
+    if (currentSongIndex >= playlist.length) {
+        currentSongIndex = 0;
+    }
+    
+    audio.src = playlist[currentSongIndex];
+    audio.load();
+    
+    // بعد التبديل، بنشغل أوتوماتيك عشان المستخدم ميتلخبطش
+    audio.play();
+    playPauseBtn.innerHTML = "⏸️ إيقاف";
+    songNameDisplay.innerText = "شغال دلوقتي: " + playlist[currentSongIndex];
+}
+
+
+
+
+</script>
+</body>
+</html>
+

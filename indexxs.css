@@ -1,0 +1,860 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffeef2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+/* شاشة الباسورد */
+#password-screen {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: #ff758c;
+    display: flex; justify-content: center; align-items: center;
+    z-index: 1000;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.login-box input {
+    padding: 10px; margin: 20px 0; border: 2px solid #ff758c; border-radius: 10px;
+}
+
+.login-box button {
+    background: #ff758c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;
+}
+
+/* العنوان */
+.main-title {
+    color: #d63384;
+    margin-top: 30px;
+}
+
+/* الأغاني */
+.music-section {
+    background: white;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 50px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.music-controls button {
+    background: #d63384; color: white; border: none; padding: 5px 15px; border-radius: 20px; margin: 5px; cursor: pointer;
+}
+
+/* الكروت الكبيرة */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.fancy-card {
+    width: 90%;
+    max-width: 700px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card-header {
+    background: #ff758c;
+    color: white;
+    padding: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    padding: 0 20px;
+}
+
+.fancy-card.active .card-body {
+    max-height: 500px; /* بيفتح لما تدوس */
+    padding: 20px;
+}
+
+/* القلوب الطايرة */
+.heart-drop {
+    position: fixed;
+    top: -10%;
+    z-index: -1;
+    font-size: 20px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+
+
+
+/* تنسيق الحاوية للجوابات تحت بعض */
+.envelopes-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px; /* مسافة عشان الجواب لما يفتح ميتغطاش */
+    padding: 50px 0;
+}
+
+/* شكل المظروف */
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background: #ff758c; /* لون المظروف */
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+/* الجهة الأمامية للمظروف */
+.envelope-front {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #ff4b68;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+    z-index: 5;
+    text-align: center;
+    padding: 10px;
+}
+
+/* غطاء الجواب (المثلث اللي فوق) */
+.envelope-flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #ff4b68; /* لون الغطاء */
+    transform-origin: top;
+    transition: 0.4s ease-in-out;
+    z-index: 6;
+}
+
+/* الورقة اللي جوه الجواب */
+.envelope-paper {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background: white;
+    padding: 15px;
+    color: #333;
+    border-radius: 5px;
+    transition: 0.5s ease-in-out;
+    z-index: 4;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: right;
+}
+
+.envelope-paper h3 { margin-top: 0; color: #ff4b68; font-size: 1rem; }
+.envelope-paper p { font-size: 0.9rem; line-height: 1.4; }
+
+/* --- الأنيميشن لما ندوس على الجواب --- */
+
+/* 1. الغطاء يفتح لفوق */
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 3; /* ينزل ورا الورقة */
+}
+
+/* 2. الورقة تطلع لفوق */
+.envelope.open .envelope-paper {
+    transform: translateY(-100px); /* بتطلع بره المظروف */
+    height: auto;
+    min-height: 200px;
+    z-index: 7; /* تبقى قدام كل حاجة */
+}
+
+
+
+
+
+
+
+
+
+.countdown-container {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: rgb(239, 16, 16);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffcc00; /* لون ذهبي زي الإضاءة اللي في الخلفية */
+}
+
+#timer span {
+    font-size: 2rem;
+    margin: 0 5px;
+}
+
+
+/* --- الكود الجديد للخلفية المتحركة --- */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* 1. تحديد ألوان التدريج (تقدري تغيري الألوان دي براحتك) */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    
+    /* 2. تكبير حجم الخلفية عشان الأنيميشن يشتغل */
+    background-size: 400% 400%;
+    
+    /* 3. تشغيل الأنيميشن (اسم الأنيميشن، المدة، الحركة مستمرة) */
+    animation: gradientBG 15s ease infinite;
+    
+    /* لضمان إن المحتوى ميزقش الخلفية */
+    overflow-x: hidden; 
+}
+
+/* 4. تعريف حركات الأنيميشن (إزاي الألوان بتتحرك) */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* طبقة تغميق خفيفة جداً لو عايز الكلام يبان أكتر (اختياري) */
+/*
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+*/
+
+/* باقي ستايلات المحتوى (تأكد إنها موجودة تحت كود الخلفية) */
+#password-screen {
+    position: fixed; z-index: 1000; top:0; left:0; width:100%; height:100%;
+    background: #ff758c; display: flex; justify-content: center; align-items: center;
+}
+.login-box { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+.login-box input { padding: 10px; margin: 20px 0; border: 2px solid #ff758c; border-radius: 10px; outline: none; }
+.login-box button { background: #ff758c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
+
+.main-title { color: white; text-align: center; margin-top: 50px; font-size: 2.5rem; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); }
+
+/* العداد */
+.countdown-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: white; padding: 20px; border-radius: 20px; margin: 20px auto; width: fit-content; text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+#timer { font-size: 1.5rem; font-weight: bold; color: #ffcc00; }
+#timer span { font-size: 2rem; margin: 0 5px; }
+
+/* الجوابات (تأكد إن الـ z-index مظبوط) */
+.envelopes-wrapper { display: flex; flex-direction: column; align-items: center; gap: 80px; padding: 50px 0; position: relative; z-index: 10; }
+.envelope { position: relative; width: 500px; height: 400px; background: #ff758c; border-radius: 0 0 10px 10px; cursor: pointer; }
+.envelope-front { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #ff4b68; color: white; display: flex; justify-content: center; align-items: center; border-radius: 0 0 10px 10px; z-index: 5; text-align: center; font-weight: bold; padding: 10px; }
+.envelope-flap { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 150px solid transparent; border-right: 150px solid transparent; border-top: 100px solid #ff4b68; transform-origin: top; transition: 0.4s; z-index: 6; }
+.envelope-paper { position: absolute; bottom: 5px; left: 10px; width: 480px; height: 380px; background: white; padding: 15px; border-radius: 5px; transition: 0.5s; z-index: 4; text-align: right; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.envelope.open .envelope-flap { transform: rotateX(180deg); z-index: 3; }
+.envelope.open .envelope-paper { transform: translateY(-120px); z-index: 7; height: auto; }
+
+/* القلوب الطائرة */
+.heart-drop { position: fixed; top: -10%; z-index: 2; color: rgba(255, 117, 140, 0.7); animation: fall linear forwards; pointer-events: none; }
+@keyframes fall { to { transform: translateY(110vh); } }
+
+/* الأغاني */
+.music-section { text-align: center; margin: 20px; position: relative; z-index: 10; }
+.music-controls button { background: #ff4b68; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin: 5px; font-weight: bold; }
+
+
+
+
+
+
+
+
+
+
+/* ستايل اسم Ganna */
+.name-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.ganna-name {
+    font-size: 4rem; /* اسم كبير وواضح */
+    color: white;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #ff4b68, 0 0 20px #ff4b68, 0 0 40px #ff4b68;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.heart-icon {
+    font-size: 2.5rem;
+    animation: pulse 1.5s infinite;
+}
+
+/* أنيميشن نبض القلب واللمعان */
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff4b68, 0 0 20px #ff4b68; }
+    to { text-shadow: 0 0 20px #ff758c, 0 0 30px #ff758c, 0 0 50px #ff758c; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* القلوب اللي بتتحرك في الخلفية */
+.floating-heart {
+    position: fixed;
+    bottom: -100px;
+    color: rgba(255, 75, 104, 0.6); /* لون قلوب شفاف شوية عشان ميزغللش العين */
+    font-size: 20px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1; /* خلف المحتوى */
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* شاشة الباسورد كاملة */
+#password-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #ff9a9e; /* خلفية وردي هادية */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+/* شكل القلب الكبير */
+.heart-shape {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: #ff4b68; /* لون القلب */
+    transform: rotate(-45deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-shape:before,
+.heart-shape:after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-color: #ff4b68;
+    border-radius: 50%;
+}
+
+.heart-shape:before {
+    top: -150px;
+    left: 0;
+}
+
+.heart-shape:after {
+    left: 150px;
+    top: 0;
+}
+
+/* الكلام والمدخلات جوه القلب */
+.content-inside-heart {
+    transform: rotate(45deg); /* عشان نعدل الكلام بعد ما لفينا القلب */
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    width: 250px;
+}
+
+.content-inside-heart h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ستايل مكان كتابة الباسورد */
+.content-inside-heart input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    outline: none;
+    text-align: center;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ستايل الزرار */
+.content-inside-heart button {
+    background-color: white;
+    color: #ff4b68;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.content-inside-heart button:hover {
+    transform: scale(1.1);
+    background-color: #ffeef2;
+}
+
+
+.heart-btn {
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+    background-color: #ff4b68;
+    color: white;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.player-controls button {
+    background: #ff4b68;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.player-controls button:hover {
+    background: white;
+    color: #ff4b68;
+    transform: scale(1.1);
+}
+
+
+
+
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* عشان لو الشاشة صغيرة الزراير تنزل تحت بعض */
+}
+
+.player-controls button {
+    background: #ff4b68;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.player-controls button:hover {
+    background: white;
+    color: #ff4b68;
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+
+.envelopes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 120px 40px; 
+    padding: 50px 20px;
+}
+
+
+.photo-envelope {
+    position: relative;
+    width: 250px;
+    height: 180px;
+    background: #ff4b68;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    z-index: 5;
+}
+
+.p-envelope-front {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #ff3352;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 0 0 10px 10px;
+    z-index: 10;
+}
+
+.p-envelope-flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    border-top: 90px solid #ff3352;
+    transform-origin: top;
+    transition: 0.4s;
+    z-index: 11;
+}
+
+
+.p-envelope-paper {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 230px;
+    height: 160px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.6s ease-in-out;
+    z-index: 8;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.p-envelope-paper img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.p-envelope-paper p {
+    margin: 5px 0 0;
+    font-size: 0.8rem;
+    color: #ff4b68;
+    font-weight: bold;
+}
+
+
+.photo-envelope.open .p-envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 7;
+}
+
+.photo-envelope.open .p-envelope-paper {
+    transform: translateY(-130px) scale(1.1); 
+    z-index: 15;
+}  */
+
+
+
+
+
+
+
+
+
+
+
+
+/* الأكواد دي هتشتغل بس لما الموقع يتفتح من موبايل */
+@media screen and (max-width: 600px) {
+    
+    /* 1. تصغير العنوان واسم Ganna */
+    .ganna-name {
+        font-size: 2.5rem; /* تصغير الاسم شوية */
+        letter-spacing: 2px;
+    }
+
+    .main-title, .birthday-wish {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+
+    /* 2. ضبط العداد (Countdown) */
+    .countdown-container {
+        width: 90%;
+        padding: 15px;
+    }
+    #timer {
+        font-size: 1.1rem;
+    }
+    #timer span {
+        font-size: 1.5rem;
+    }
+
+    /* 3. ضبط الجوابات (الرسايل والصور) */
+    .envelopes-wrapper, .envelopes-grid {
+        gap: 60px 20px; /* تقليل المسافة بين الجوابات */
+        padding: 30px 10px;
+    }
+
+    .envelope, .photo-envelope {
+        width: 200px; /* تصغير عرض الجواب */
+        height: 140px; /* تصغير ارتفاع الجواب */
+    }
+
+    /* ضبط غطاء الجواب الصغير */
+    .envelope-flap, .p-envelope-flap {
+        border-left-width: 100px;
+        border-right-width: 100px;
+        border-top-width: 70px;
+    }
+
+    /* ضبط الورقة اللي جوه الجواب */
+    .envelope-paper, .p-envelope-paper {
+        width: 180px;
+        height: 130px;
+        left: 5px;
+    }
+
+    /* ضبط حجم الصورة جوه كارت الموبايل */
+    .p-envelope-paper img {
+        height: 90px;
+    }
+
+    /* 4. حركة الفتح للموبايل (عشان الورقة متطلعش بره الشاشة) */
+    .envelope.open .envelope-paper, 
+    .photo-envelope.open .p-envelope-paper {
+        transform: translateY(-90px) scale(1.05);
+    }
+
+    /* 5. ضبط زراير الموسيقى */
+    .player-controls {
+        gap: 8px;
+    }
+    .player-controls button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    /* 6. شاشة الباسورد (القلب) */
+    .heart-shape {
+        width: 220px;
+        height: 220px;
+    }
+    .heart-shape:before, .heart-shape:after {
+        width: 220px;
+        height: 220px;
+    }
+    .heart-shape:before { top: -110px; }
+    .heart-shape:after { left: 110px; }
+    
+    .content-inside-heart {
+        width: 180px;
+    }
+    .content-inside-heart h2 {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- إعدادات التابلت (شاشات بين 601px و 1024px) --- */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .envelopes-wrapper, .envelopes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* جوابين بس في كل صف عشان ميزنقوش بعض */
+        gap: 100px 20px;
+        justify-items: center;
+        padding: 40px;
+    }
+
+    .ganna-name {
+        font-size: 3.5rem;
+    }
+
+    .envelope, .photo-envelope {
+        width: 250px; /* حجم متوسط */
+        height: 180px;
+    }
+
+    /* ضبط مكان الورقة لما تطلع */
+    .envelope.open .envelope-paper, 
+    .photo-envelope.open .p-envelope-paper {
+        transform: translateY(-110px) scale(1.05);
+    }
+}
+
+
+
+
+
+
+.envelope-paper {
+    /* ... الأكواد القديمة ... */
+    overflow-y: auto; /* بيعمل سكرول لو الكلام زاد في أي شاشة */
+    word-wrap: break-word; /* بيخلي الكلمة الطويلة تنزل سطر جديد بدل ما تخرج بالعرض */
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    /* تعديل الورقة اللي جوه الجواب */
+    .envelope-paper {
+        width: 180px;
+        height: auto; /* خلي الطول مرن */
+        min-height: 130px; /* أقل طول للورقة */
+        max-height: 250px; /* أقصى طول عشان متغطيش الشاشة كلها */
+        overflow-y: auto; /* أهم سطر: لو الكلام كتير هيعمل سكروول جوه الورقة */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* عشان لما الجواب يتفتح، الورقة تطلع لمسافة تسمح برؤية الكلام */
+    .envelope.open .envelope-paper {
+        transform: translateY(-120px) scale(1.05); /* زودنا مسافة الطلوع شوية */
+    }
+}
+
+
+/* تنسيق السكرول بار جوه الورقة */
+.envelope-paper::-webkit-scrollbar {
+    width: 4px;
+}
+.envelope-paper::-webkit-scrollbar-thumb {
+    background: #ff4b68; /* لون السكرول يبقى نفس لون التصميم */
+    border-radius: 10px;
+}
+
+
+
+.envelope-paper {
+    /* ... الأكواد القديمة ... */
+    overflow-y: auto; /* بيعمل سكرول لو الكلام زاد في أي شاشة */
+    word-wrap: break-word; /* بيخلي الكلمة الطويلة تنزل سطر جديد بدل ما تخرج بالعرض */
+}
+
+
+
+
+
+
